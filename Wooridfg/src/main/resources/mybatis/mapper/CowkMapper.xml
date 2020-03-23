@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wooridfg.api.mapper.CowkMapper">
+    <select id="getByRcmd" resultType="com.wooridfg.api.dto.CowkMain">
+        SELECT SEQ, RGS_DT rgsDt, RGS_DCD rgsDcd, RGS_EMP_NO rgsEmpNo,
+        	   RCMD_EMP_NO rcmdEmpNo, COWK_DESC cowkDesc, COWK_PFMS cowkPfms
+        FROM COWK_MAIN
+        WHERE RCMD_EMP_NO = #{rcmdEmpNo}
+    </select>
+    
+    <insert id="insertCowk" parameterType="com.wooridfg.api.dto.CowkMain">
+        INSERT INTO COWK_MAIN
+       <!--  VALUES(0, #{rgs_dt}, #{rgs_dcd}, #{rgs_emp_no}, #{rcmd_emp_no}, #{cowk_desc}, #{cowk_pfms}, current_timestamp()) -->
+       VALUES(0, #{rgsDt}, #{rgsDcd}, #{rgsEmpNo}, #{rcmdEmpNo}, #{cowkDesc}, #{cowkPfms}, current_timestamp())
+    </insert>
+</mapper>

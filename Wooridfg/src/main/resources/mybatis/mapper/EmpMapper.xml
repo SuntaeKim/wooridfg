@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wooridfg.api.mapper.EmpMapper">
+    <select id="getAll" resultType="com.wooridfg.api.dto.EmpInfo">
+        SELECT EMP_NO empNo, EMP_NM empNm, TITLE, DPTMT 
+          FROM EMP_INFO
+    </select>
+    
+    <select id="getByEmpno" resultType="com.wooridfg.api.dto.EmpInfo">
+        SELECT EMP_NO empNo, EMP_NM empNm, TITLE, DPTMT
+          FROM EMP_INFO
+         WHERE EMP_NO = #{empNo} 
+    </select>
+</mapper>
