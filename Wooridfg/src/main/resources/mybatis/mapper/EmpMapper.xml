@@ -6,9 +6,9 @@
           FROM EMP_INFO
     </select>
     
-    <select id="getByEmpno" resultType="com.wooridfg.api.dto.EmpInfo">
+    <select id="getByEmpnm" resultType="com.wooridfg.api.dto.EmpInfo">
         SELECT EMP_NO empNo, EMP_NM empNm, TITLE, DPTMT
           FROM EMP_INFO
-         WHERE EMP_NO = #{empNo} 
+         WHERE EMP_NM LIKE CONCAT('%',#{empNm},'%')
     </select>
 </mapper>

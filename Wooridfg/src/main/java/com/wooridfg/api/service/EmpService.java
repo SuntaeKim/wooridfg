@@ -17,8 +17,8 @@ public class EmpService {
         return empMapper.getAll();
     }
 	 
-	public EmpInfo getByEmpno(int empNo) throws Exception{
-		return empMapper.getByEmpno(empNo);
+	public EmpInfo getByEmpnm(String empNm) throws Exception{
+		return empMapper.getByEmpnm(empNm);
 	}
 
 }
