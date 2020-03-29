@@ -8,6 +8,6 @@ public interface EmpMapper {
 
 	public List<EmpInfo> getAll() throws Exception;
 
-	public EmpInfo getByEmpnm(String empNm) throws Exception;
+	public List<EmpInfo> getByEmpnm(String empNm) throws Exception;
 
 }

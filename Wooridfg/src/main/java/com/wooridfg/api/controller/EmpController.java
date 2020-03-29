@@ -28,8 +28,8 @@ public class EmpController {
   }
   
   @RequestMapping(value = "/{empnm}")
-  public ResponseEntity<EmpInfo> getByEmpno(@PathVariable("empnm") String empNm) throws Exception {
-	  EmpInfo emp = empService.getByEmpnm(empNm); 
-    return new ResponseEntity<EmpInfo>(emp, HttpStatus.OK);
+  public ResponseEntity<List<EmpInfo>> getByEmpnm(@PathVariable("empnm") String empNm) throws Exception {
+	  List<EmpInfo> emps = empService.getByEmpnm(empNm); 
+    return new ResponseEntity<List<EmpInfo>>(emps, HttpStatus.OK);
   }
 }
