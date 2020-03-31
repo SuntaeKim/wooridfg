@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wooridfg.api.mapper.RcmdMapper">
+    <select id="getAllRcmd" resultType="com.wooridfg.api.dto.RcmdMain">
+        SELECT A.RGS_DT rgsDt, B.EMP_NM rcmdEmpNm,
+			   A.COWK_DESC cowkDesc, A.COWK_PFMS cowkPfms, A.IMPRS_PNT imprsPnt
+		  FROM COWK_RCMD A,
+				EMP_INFO B
+		 WHERE A.RCMD_EMP_NO = B.EMP_NO
+	  ORDER BY A.RGS_DTTM DESC
+    </select>
+    
+    <insert id="insertRcmd" parameterType="com.wooridfg.api.dto.RcmdMain">
+        INSERT INTO COWK_RCMD
+       <!--  VALUES(0, #{rgs_dt}, #{rgs_dcd}, #{rgs_emp_no}, #{rcmd_emp_no}, #{cowk_desc}, #{cowk_pfms}, current_timestamp()) -->
+       VALUES(0, date_format(now(), '%Y%m%d'), #{rcmdEmpNo}, #{cowkDesc}, #{cowkPfms}, #{imprsPnt}, #{rgsEmpNo}, current_timestamp())
+    </insert>
+</mapper>
