@@ -7,7 +7,7 @@ public class RcmdMain {
 	private String cowkDesc;
 	private String cowkPfms;
 	private String imprsPnt;
-	private int rgsEmpNo;
+	private String rgsEmpNm;
 	public String getRgsDt() {
 		return rgsDt;
 	}
@@ -44,16 +44,16 @@ public class RcmdMain {
 	public void setImprsPnt(String imprsPnt) {
 		this.imprsPnt = imprsPnt;
 	}
-	public int getRgsEmpNo() {
-		return rgsEmpNo;
+	public String getRgsEmpNm() {
+		return rgsEmpNm;
 	}
-	public void setRgsEmpNo(int rgsEmpNo) {
-		this.rgsEmpNo = rgsEmpNo;
+	public void setRgsEmpNm(String rgsEmpNm) {
+		this.rgsEmpNm = rgsEmpNm;
 	}
 	@Override
 	public String toString() {
 		return "RcmdMain [rgsDt=" + rgsDt + ", rcmdEmpNo=" + rcmdEmpNo + ", rcmdEmpNm=" + rcmdEmpNm + ", cowkDesc="
-				+ cowkDesc + ", cowkPfms=" + cowkPfms + ", imprsPnt=" + imprsPnt + ", rgsEmpNo=" + rgsEmpNo + "]";
+				+ cowkDesc + ", cowkPfms=" + cowkPfms + ", imprsPnt=" + imprsPnt + ", rgsEmpNm=" + rgsEmpNm + "]";
 	}
 	
 	

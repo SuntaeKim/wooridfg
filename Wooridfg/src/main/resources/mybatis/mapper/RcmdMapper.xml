@@ -3,14 +3,14 @@
 <mapper namespace="com.wooridfg.api.mapper.RcmdMapper">
     <select id="getAllRcmd" resultType="com.wooridfg.api.dto.RcmdMain">
     	<!-- 추천 테이블 전체 조회 : AA는 추천사원명, BB는 등록사원명 가져와서 JOIN -->
-		SELECT AA.RGS_DT rgsDt, AA.EMP_NM rcmdEmpNm, BB.EMP_NM rgsEmpNm,
+		SELECT AA.RGS_DT rgsDt, AA.RCMD_EMP_NO rcmdEmpNo, AA.EMP_NM rcmdEmpNm, BB.EMP_NM rgsEmpNm,
 					   AA.COWK_DESC cowkDesc, AA.COWK_PFMS cowkPfms, AA.IMPRS_PNT imprsPnt
 		FROM (SELECT A.*, B.EMP_NM
-				FROM COWK_RCMD A,
+				FROM COWK_RCMD_TEST A,
 				     EMP_INFO B
 				WHERE A.RCMD_EMP_NO = B.EMP_NO) AA ,
 				(SELECT A.*, B.EMP_NM
-				FROM COWK_RCMD A,
+				FROM COWK_RCMD_TEST A,
 				     EMP_INFO B
 				WHERE A.RGS_EMP_NO = B.EMP_NO) BB
 		WHERE AA.RCMD_EMP_NO = BB.RCMD_EMP_NO
@@ -18,7 +18,7 @@
     </select>
     
     <insert id="insertRcmd" parameterType="com.wooridfg.api.dto.RcmdMain">
-        INSERT INTO COWK_RCMD
+        INSERT INTO COWK_RCMD_TEST
        <!--  VALUES(0, #{rgs_dt}, #{rgs_dcd}, #{rgs_emp_no}, #{rcmd_emp_no}, #{cowk_desc}, #{cowk_pfms}, current_timestamp()) -->
        VALUES(0, date_format(now(), '%Y%m%d'), #{rcmdEmpNo}, #{cowkDesc}, #{cowkPfms}, #{imprsPnt}, #{rgsEmpNo}, current_timestamp())
     </insert>
