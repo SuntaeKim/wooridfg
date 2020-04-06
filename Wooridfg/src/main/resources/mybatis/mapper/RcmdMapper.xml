@@ -5,15 +5,12 @@
     	<!-- 추천 테이블 전체 조회 : AA는 추천사원명, BB는 등록사원명 가져와서 JOIN -->
 		SELECT AA.RGS_DT rgsDt, AA.RCMD_EMP_NO rcmdEmpNo, AA.EMP_NM rcmdEmpNm, BB.EMP_NM rgsEmpNm,
 					   AA.COWK_DESC cowkDesc, AA.COWK_PFMS cowkPfms, AA.IMPRS_PNT imprsPnt
-		FROM (SELECT A.*, B.EMP_NM
-				FROM COWK_RCMD_TEST A,
-				     EMP_INFO B
-				WHERE A.RCMD_EMP_NO = B.EMP_NO) AA ,
-				(SELECT A.*, B.EMP_NM
-				FROM COWK_RCMD_TEST A,
-				     EMP_INFO B
-				WHERE A.RGS_EMP_NO = B.EMP_NO) BB
-		WHERE AA.RCMD_EMP_NO = BB.RCMD_EMP_NO
+		FROM(SELECT A.*, B.EMP_NM
+			FROM COWK_RCMD_TEST A,
+			     EMP_INFO B
+			WHERE A.RCMD_EMP_NO = B.EMP_NO) AA,
+				EMP_INFO BB
+		WHERE AA.RGS_EMP_NO = BB.EMP_NO
 		ORDER BY AA.RGS_DTTM DESC
     </select>
     

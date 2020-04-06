@@ -8,6 +8,14 @@ public class RcmdMain {
 	private String cowkPfms;
 	private String imprsPnt;
 	private String rgsEmpNm;
+	private int rgsEmpNo;
+	
+	public int getRgsEmpNo() {
+		return rgsEmpNo;
+	}
+	public void setRgsEmpNo(int rgsEmpNo) {
+		this.rgsEmpNo = rgsEmpNo;
+	}
 	public String getRgsDt() {
 		return rgsDt;
 	}
@@ -53,8 +61,10 @@ public class RcmdMain {
 	@Override
 	public String toString() {
 		return "RcmdMain [rgsDt=" + rgsDt + ", rcmdEmpNo=" + rcmdEmpNo + ", rcmdEmpNm=" + rcmdEmpNm + ", cowkDesc="
-				+ cowkDesc + ", cowkPfms=" + cowkPfms + ", imprsPnt=" + imprsPnt + ", rgsEmpNm=" + rgsEmpNm + "]";
+				+ cowkDesc + ", cowkPfms=" + cowkPfms + ", imprsPnt=" + imprsPnt + ", rgsEmpNm=" + rgsEmpNm
+				+ ", rgsEmpNo=" + rgsEmpNo + "]";
 	}
+
 	
 	
 }
