@@ -9,5 +9,7 @@ public interface EmpMapper {
 	public List<EmpInfo> getAll() throws Exception;
 
 	public List<EmpInfo> getByEmpnm(String empNm) throws Exception;
+	
+	public String validationEmpno(int empNo) throws Exception;
 
 }

@@ -21,4 +21,7 @@ public class EmpService {
 		return empMapper.getByEmpnm(empNm);
 	}
 
+	public String validationEmpno(int empNo) throws Exception{
+		return empMapper.validationEmpno(empNo);
+	}
 }

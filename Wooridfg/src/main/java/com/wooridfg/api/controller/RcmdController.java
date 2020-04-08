@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wooridfg.api.dto.RcmdMain;
+import com.wooridfg.api.service.EmpService;
 import com.wooridfg.api.service.RcmdService;
 
 @CrossOrigin("*")
@@ -20,6 +21,8 @@ import com.wooridfg.api.service.RcmdService;
 public class RcmdController {
 	@Autowired
 	RcmdService rcmdService;
+	@Autowired
+	EmpService empService;
 	
 	@RequestMapping
 	public ResponseEntity<List<RcmdMain>> getAllRcmd() throws Exception {
@@ -29,7 +32,15 @@ public class RcmdController {
 	
 	@PostMapping
 	public ResponseEntity<RcmdMain> insertRcmd(@RequestBody RcmdMain rcmd) throws Exception{
-		rcmdService.insertRcmd(rcmd);
-		return new ResponseEntity<RcmdMain>(HttpStatus.OK);
+		
+		String val = empService.validationEmpno(rcmd.getRgsEmpNo());
+		
+		if(val.equals("N")){
+			return new ResponseEntity<RcmdMain>(HttpStatus.CONFLICT);
+		} else {
+			rcmdService.insertRcmd(rcmd);
+			return new ResponseEntity<RcmdMain>(HttpStatus.OK);
+		}
+		
 	}
 }

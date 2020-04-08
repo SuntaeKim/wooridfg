@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wooridfg.api.dto.RgsMain;
+import com.wooridfg.api.service.EmpService;
 import com.wooridfg.api.service.RgsService;
 
 @CrossOrigin("*")
@@ -20,6 +21,8 @@ import com.wooridfg.api.service.RgsService;
 public class RgsController {
 	@Autowired
 	RgsService RgsService;
+	@Autowired
+	EmpService empService;
 	
 	@RequestMapping
 	public ResponseEntity<List<RgsMain>> getAllRgs() throws Exception {
@@ -28,8 +31,15 @@ public class RgsController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<RgsMain> insertRgs(@RequestBody RgsMain Rgs) throws Exception{
-		RgsService.insertRgs(Rgs);
-		return new ResponseEntity<RgsMain>(HttpStatus.OK);
+	public ResponseEntity<RgsMain> insertRgs(@RequestBody RgsMain rgs) throws Exception{
+		
+		String val = empService.validationEmpno(rgs.getRgsEmpNo());
+		
+		if(val.equals("N")){
+			return new ResponseEntity<RgsMain>(HttpStatus.CONFLICT);
+		} else {
+			RgsService.insertRgs(rgs);
+			return new ResponseEntity<RgsMain>(HttpStatus.OK);
+		}
 	}
 }
