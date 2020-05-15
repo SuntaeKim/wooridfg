@@ -24,4 +24,8 @@ public class EmpService {
 	public String validationEmpno(int empNo) throws Exception{
 		return empMapper.validationEmpno(empNo);
 	}
+	
+	public String validationLogin(int empNo, String empNm) throws Exception{
+		return empMapper.validationLogin(empNo, empNm);
+	}
 }

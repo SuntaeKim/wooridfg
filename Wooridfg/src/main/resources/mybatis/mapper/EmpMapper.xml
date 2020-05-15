@@ -17,4 +17,12 @@
 		FROM EMP_INFO
 		WHERE EMP_NO = #{empNo}
     </select>
+    
+     <select id="validationLogin" resultType="String">
+        SELECT CASE COUNT(*) WHEN 0 THEN 'N' ELSE 'Y' END AS YN
+		FROM EMP_INFO
+		WHERE EMP_NO = #{empNo}
+		AND EMP_NM = #{empNm}
+		AND USE_YN = 'Y'
+    </select>
 </mapper>
