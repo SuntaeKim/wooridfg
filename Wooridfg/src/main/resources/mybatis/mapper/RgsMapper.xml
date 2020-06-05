@@ -4,14 +4,14 @@
     <select id="getAllRgs" resultType="com.wooridfg.api.dto.RgsMain">
 	SELECT A.RGS_DT rgsDt, A.RGS_EMP_NO rgsEmpNo, B.EMP_NM rgsEmpNm, A.COWK_DESC cowkDesc, A.COWK_DTL cowkDtl,
 			A.COWK_EMP_NM cowkEmpNm, A.COWK_EMP_NM2 cowkEmpNm2, A.COWK_EMP_NM3 cowkEmpNm3
-	  FROM COWK_RGS_TEST A,
+	  FROM COWK_RGS A,
 			EMP_INFO B
 	 WHERE A.RGS_EMP_NO = B.EMP_NO
   ORDER BY A.RGS_DTTM DESC
     </select>
     
     <insert id="insertRgs" parameterType="com.wooridfg.api.dto.RgsMain">
-        INSERT INTO COWK_RGS_TEST
+        INSERT INTO COWK_RGS
        <!--  VALUES(0, #{rgs_dt}, #{rgs_dcd}, #{rgs_emp_no}, #{rcmd_emp_no}, #{cowk_desc}, #{cowk_pfms}, current_timestamp()) -->
        VALUES(0, date_format(now(), '%Y%m%d'), #{rgsEmpNo}, #{cowkDesc}, #{cowkDtl}, #{cowkEmpNm}, #{cowkEmpNm2}, #{cowkEmpNm3}, current_timestamp())
     </insert>

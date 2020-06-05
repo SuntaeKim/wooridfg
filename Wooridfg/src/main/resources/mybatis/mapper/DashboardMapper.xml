@@ -3,7 +3,7 @@
 <mapper namespace="com.wooridfg.api.mapper.DashboardMapper">
     <select id="getRcmdTop5" resultType="com.wooridfg.api.dto.Dashboard">
     	SELECT 'rcmd' item, B.EMP_NM name, COUNT(*) cnt, B.TITLE title, B.DPTMT dptmt
-		FROM COWK_RCMD_TEST A, EMP_INFO B
+		FROM COWK_RCMD A, EMP_INFO B
 		WHERE A.RCMD_EMP_NO = B.EMP_NO
 		GROUP BY A.RCMD_EMP_NO
 		ORDER BY cnt DESC
@@ -12,7 +12,7 @@
     
     <select id="getRgsTop5" resultType="com.wooridfg.api.dto.Dashboard">
     	SELECT 'rgs' item, B.EMP_NM name, COUNT(*) cnt, B.TITLE title, B.DPTMT dptmt
-		FROM COWK_RGS_TEST A, EMP_INFO B
+		FROM COWK_RGS A, EMP_INFO B
 		WHERE A.RGS_EMP_NO = B.EMP_NO
 		GROUP BY A.RGS_EMP_NO
 		ORDER BY cnt DESC
@@ -21,7 +21,7 @@
     
      <select id="getDptmtCnt" resultType="com.wooridfg.api.dto.Dashboard">
     	SELECT 'dptmt' item, B.DPTMT dptmt, COUNT(*) cnt
-		FROM COWK_RCMD_TEST A, EMP_INFO B
+		FROM COWK_RCMD A, EMP_INFO B
 		WHERE A.RCMD_EMP_NO = B.EMP_NO
 		GROUP BY B.DPTMT
 		ORDER BY cnt DESC

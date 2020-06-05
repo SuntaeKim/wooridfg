@@ -6,7 +6,7 @@
 		SELECT AA.RGS_DT rgsDt, AA.RCMD_EMP_NO rcmdEmpNo, AA.EMP_NM rcmdEmpNm, BB.EMP_NM rgsEmpNm,
 					   AA.COWK_DESC cowkDesc, AA.COWK_PFMS cowkPfms, AA.IMPRS_PNT imprsPnt
 		FROM(SELECT A.*, B.EMP_NM
-			FROM COWK_RCMD_TEST A,
+			FROM COWK_RCMD A,
 			     EMP_INFO B
 			WHERE A.RCMD_EMP_NO = B.EMP_NO) AA,
 				EMP_INFO BB
@@ -15,7 +15,7 @@
     </select>
     
     <insert id="insertRcmd" parameterType="com.wooridfg.api.dto.RcmdMain">
-        INSERT INTO COWK_RCMD_TEST
+        INSERT INTO COWK_RCMD
        <!--  VALUES(0, #{rgs_dt}, #{rgs_dcd}, #{rgs_emp_no}, #{rcmd_emp_no}, #{cowk_desc}, #{cowk_pfms}, current_timestamp()) -->
        VALUES(0, date_format(now(), '%Y%m%d'), #{rcmdEmpNo}, #{cowkDesc}, #{cowkPfms}, #{imprsPnt}, #{rgsEmpNo}, current_timestamp())
     </insert>
